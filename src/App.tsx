@@ -7,6 +7,7 @@ import { Home } from './pages/Home'
 import { Blog } from './pages/Blog'
 import { BlogPost } from './pages/BlogPost'
 import { Tags } from './pages/Tags'
+import {About} from './pages/About'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/tags" element={<Tags />} />
             <Route path="/tags/:tag" element={<Blog />} />
+            <Route path="/about" element={<About/>}/>
           </Routes>
         </Layout>
       </Router>
