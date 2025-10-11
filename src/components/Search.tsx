@@ -1,7 +1,7 @@
 // src/components/Search.tsx
 import React, { useState, useMemo } from 'react'
 import { Search as SearchIcon, X } from 'lucide-react'
-import { BlogPost } from '../types/blog'
+import { type BlogPost } from '../types/blog'
 
 interface SearchProps {
   posts: BlogPost[]
