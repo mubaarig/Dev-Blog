@@ -11,6 +11,7 @@ import {About} from './pages/About'
 
 function App() {
   return (
+    //test comments 
     <ThemeProvider>
       <Router>
         <Layout>
