@@ -1,5 +1,5 @@
 // src/components/Search.tsx
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { Search as SearchIcon, X } from 'lucide-react'
 import { type BlogPost } from '../types/blog'
 
@@ -8,9 +8,8 @@ interface SearchProps {
   onResults: (results: BlogPost[]) => void
 }
 
-export const Search: React.FC<SearchProps> = ({ posts, onResults }) => {
+export const Search = ({ posts, onResults }: SearchProps) => {
   const [query, setQuery] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
 
   const results = useMemo(() => {
     if (!query.trim()) return posts
@@ -36,7 +35,6 @@ export const Search: React.FC<SearchProps> = ({ posts, onResults }) => {
           placeholder="Search posts..."
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
-          onFocus={() => setIsOpen(true)}
           className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         {query && (

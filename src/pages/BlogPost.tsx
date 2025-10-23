@@ -1,5 +1,5 @@
 // src/pages/BlogPost.tsx
-import React, { useMemo } from 'react'
+import { type FC } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Calendar, Clock, Tag, ArrowLeft } from 'lucide-react'
 import { MDXProvider } from '@mdx-js/react'
@@ -9,7 +9,7 @@ import { formatDate } from '../lib/utils'
 import { GiscusComments } from './../components/GiscusComments'
 
 // Simple MDX content component for demo
-const DemoMDXContent: React.FC = () => {
+const DemoMDXContent: FC = () => {
   return (
     <div className="prose prose-lg dark:prose-dark max-w-none">
       <h2>Why TypeScript?</h2>
@@ -81,10 +81,11 @@ const mockHeadings = [
   { id: 'conclusion', text: 'Conclusion', level: 2 }
 ]
 
-export const BlogPost: React.FC = () => {
+export const BlogPost: FC = () => {
   const { slug } = useParams<{ slug: string }>()
+  const post = slug === mockPost.slug ? mockPost : null
 
-  if (!mockPost) {
+  if (!post) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Post not found</h1>
@@ -113,29 +114,29 @@ export const BlogPost: React.FC = () => {
             {/* Header */}
             <header className="mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
               <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                {mockPost.title}
+                {post.title}
               </h1>
               
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
-                {mockPost.description}
+                {post.description}
               </p>
               
               <div className="flex items-center flex-wrap gap-4 text-gray-600 dark:text-gray-300 mb-4">
                 <div className="flex items-center">
                   <Calendar size={20} className="mr-2" />
-                  {formatDate(mockPost.date)}
+                  {formatDate(post.date)}
                 </div>
                 <div className="flex items-center">
                   <Clock size={20} className="mr-2" />
-                  {mockPost.readingTime}
+                  {post.readingTime}
                 </div>
                 <div className="flex items-center">
-                  <span>{mockPost.wordCount} words</span>
+                  <span>{post.wordCount} words</span>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {mockPost.tags.map((tag) => (
+                {post.tags.map((tag) => (
                   <Link
                     key={tag}
                     to={`/tags/${tag}`}

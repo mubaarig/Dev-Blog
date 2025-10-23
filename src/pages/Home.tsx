@@ -102,7 +102,7 @@ export const Home: React.FC = () => {
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               Write. Share.{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gray-900 to-black-black bg-clip-text text-transparent">
                 Inspire.
               </span>
             </h1>
@@ -144,7 +144,7 @@ export const Home: React.FC = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <div
                 key={feature.title}
                 className="group p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl hover:bg-white dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 hover:shadow-xl"
@@ -168,7 +168,7 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl lg:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                   {stat.value}
@@ -261,7 +261,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 bg-gradient-to-r from-blue-400 to-purple-500">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <BookOpen className="w-16 h-16 text-white mx-auto mb-6" />
