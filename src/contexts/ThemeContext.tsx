@@ -1,16 +1,13 @@
 // src/contexts/ThemeContext.tsx
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
-type Theme = 'light' | 'dark'
+import { ThemeContext, type Theme } from './theme-context'
 
-interface ThemeContextType {
-  theme: Theme
-  toggleTheme: () => void
+interface ThemeProviderProps {
+  children: ReactNode
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
-
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>('light')
 
   useEffect(() => {
@@ -33,12 +30,4 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       {children}
     </ThemeContext.Provider>
   )
-}
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext)
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
 }

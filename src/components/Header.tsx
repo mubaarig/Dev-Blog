@@ -1,10 +1,10 @@
 // src/components/Header.tsx
-import React, { useState } from 'react'
+import { type FC, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Moon, Sun, Search, Menu, X, Code2 } from 'lucide-react'
-import { useTheme } from '../contexts/ThemeContext'
+import { useTheme } from '../contexts/theme-context'
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
   const { theme, toggleTheme } = useTheme()
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -81,14 +81,14 @@ export const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div classNameName="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
-            <div classNameName="flex flex-col space-y-4">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  classNameName={`px-4 py-2 text-base font-medium rounded-lg transition-all ${
+                  className={`px-4 py-2 text-base font-medium rounded-lg transition-all ${
                     location.pathname === item.href
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                       : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -97,13 +97,13 @@ export const Header: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
-              <div classNameName="flex items-center justify-between px-4 py-2">
-                <span classNameName="text-sm font-medium text-gray-600 dark:text-gray-300">
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                   Theme
                 </span>
                 <button
                   onClick={toggleTheme}
-                  classNameName="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
                   {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
                 </button>
